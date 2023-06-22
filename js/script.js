@@ -22,7 +22,6 @@ generateGridButton.addEventListener("click",
     function(){
         score = 0;
         scoreLabel.innerHTML = `Score: ${score}`;
-
         this.innerHTML = "Rigenera la Griglia."
         container.innerHTML = "";
         generateGrid(diff);
