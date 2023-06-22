@@ -15,11 +15,12 @@ const container = document.getElementById("gridContainer");
 const generateGridButton = document.getElementById("generateGrid");
 const diffSel = document.getElementById("diff");
 const scoreLabel = document.querySelector(".score");
-
+const tutorial = document.querySelector(".tutorial");
 let score = 0;
 //Crea Griglia tramite click su button
 generateGridButton.addEventListener("click",
     function(){
+        tutorial.classList.add("d-none");
         score = 0;
         scoreLabel.innerHTML = `Score: ${score}`;
         this.innerHTML = "Rigenera la Griglia."
@@ -88,13 +89,13 @@ function generateGrid(size){
         divArr[element - 1].addEventListener("click", function(){
             //resetta il contenuto e metti
             this.innerHTML = "";
-            this.innerHTML = `<img src="${blackHoleSprite}" class = "w-75">`;
+            this.innerHTML = `<img src="${blackHoleSprite}" class = "w-100">`;
             this.classList.add("activeCell");
             this.classList.add("blackHole");
+            score--;
+            alert(`GAME OVER Score: ${score}`);
             //update score
-            score = 0;
-            scoreLabel.innerHTML = `Score: ${score}`;
-
+            resetGridContent();
         });
     }
   
@@ -120,4 +121,17 @@ function generateBlackHoles(max) {
     }
     
     return numbers;
+  }
+
+  function resetGridContent() {
+    const cells = document.getElementsByClassName("cell");
+    for (let i = 0; i < cells.length; i++) {
+      const cell = cells[i];
+      cell.innerHTML = i + 1;
+      cell.classList.remove("activeCell");
+      cell.classList.remove("blackHole");
+    }
+    score = 0;
+    scoreLabel.innerHTML = `Score: ${score}`;
+
   }

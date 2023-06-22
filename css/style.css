@@ -18,7 +18,11 @@ label, select, option, h2{
     height: 1200px;
 }
 
-.titolo1{
+.tutorial{
+    background-color: rgba(0, 0, 0, 0.75);
+}
+
+.titolo1, .tutorial{
     font-family: 'Press Start 2P', cursive;
 }
 
